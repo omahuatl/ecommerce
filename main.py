@@ -24,6 +24,7 @@ def getLoginDetails():
     conn.close()
     return (loggedIn, firstName, noOfItems)
 
+"""
 @app.route("/")
 def root():
     loggedIn, firstName, noOfItems = getLoginDetails()
@@ -35,6 +36,21 @@ def root():
         categoryData = cur.fetchall()
     itemData = parse(itemData)   
     return render_template('home.html', itemData=itemData, loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems, categoryData=categoryData)
+"""
+@app.route("/")
+def root():
+    return render_template('index-unistore.html')
+
+
+@app.route("/catalog")
+def catalog():
+    return render_template('catalog/catalog_index.html')
+
+
+@app.route("/catalog/product")
+def product_detail():
+    return render_template('catalog/product.html')
+
 
 @app.route("/add")
 def admin():
@@ -340,3 +356,13 @@ def parse(data):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+# TODO poner una interface con Bootstrap
+# TODO agregar productos con fotos más reales
+# TODO agregar pantalla de ver profile
+# TODO Habilitar la barra de search
+# TODO unir el checkout
+
+
+#https://themehunt.com/items/html/ecommerce/latest
+#http://themehunt.com/item/1527109-darklook-e-commerce-bootstrap-responcive-template/preview
